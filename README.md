@@ -1,4 +1,4 @@
-# File Processing System for P7M Files
+# File Processing System for P7M Files (English version)
 
 ![File Icon](https://fileinfo.es/images/file-format/p7m.png)
 
@@ -122,7 +122,7 @@ Mathieu Licata
 
 ---
 
-# Sistema di Elaborazione File per P7M
+# Sistema di Elaborazione File per P7M (Italian Version)
 
 ## Panoramica
 Questo progetto offre un sistema di elaborazione file basato su PHP, che consente agli utenti di caricare, elaborare e scaricare file. In particolare, supporta l'estrazione e la conversione di file P7M, spesso utilizzati per archiviare documenti firmati digitalmente.
