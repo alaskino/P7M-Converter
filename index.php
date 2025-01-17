@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
     }
     $outputUserDir = $outputDir . $uniqueId . '/';
     mkdir($outputUserDir, 0777, true);
-    shell_exec('debian -c "/home/XX/script_conv.sh /mnt/c/XAMPP/htdocs/XX/' . $userUploadDir . ' /mnt/c/XAMPP/htdocs/XX/' . $outputUserDir . '"');
+    shell_exec('debian -c "/home/XX/process_p7m.sh /mnt/c/XAMPP/htdocs/XX/' . $userUploadDir . ' /mnt/c/XAMPP/htdocs/XX/' . $outputUserDir . '"');
 
     header("Location: ?action=download&folder=$outputUserDir&uploadDir=$userUploadDir");
     exit();
