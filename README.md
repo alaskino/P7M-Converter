@@ -75,44 +75,28 @@ Below is the script used to process P7M files. It converts them into their origi
 
 ```bash
 #!/bin/bash
-clear
 
-# Variabili di input e output passate dallo script PHP
 input="$1"
 output="$2"
 
-# Pulisci la cartella di output dai vecchi file
 cd "$output" || exit
 rm -f *.pdf
 cd
-
-# Processa i file p7m nella cartella di input
 cd "$input" || exit
 for FILE in *.p7m; do
     if [ -f "$FILE" ]; then
-        # Estrai il nome del file originale senza estensione .p7m
         ORIGINAL_FILE="${FILE%.p7m}"
-
-        # Usa openssl per verificare e convertire il file
         openssl smime -verify -noverify -in "$FILE" -inform DER -out "$ORIGINAL_FILE"
-
-        # Se la conversione ha avuto successo, elimina il file p7m
         if [ $? -eq 0 ]; then
             rm "$FILE"
         else
-            echo "Errore durante la conversione di $FILE"
+            echo "Error during the conversion of $FILE"
         fi
     fi
-
 done
-
-# Sposta i file convertiti nella cartella di output
 mv "$input"/* "$output" 2>/dev/null
-
-# Rinomina i file per rimuovere l'estensione doppia se presente (es. .pdf.p7m -> .pdf)
 cd "$output" || exit
 for file in *; do
-    # Rinomina i file mantenendo solo l'estensione corretta
     mv "$file" "${file%.p7m}"
 done
 ```
